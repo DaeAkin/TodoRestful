@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Mapper 3.0//EN/" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.todo.restful.dao.TodoDao"><!-- Class be looked -->
+	<insert id="addTodo" parameterType="java.util.HashMap"
+		useGeneratedKeys="true">
+		insert into member (
+		id_no,
+		todo
+		iscompleted,
+		) values (
+		#{id_no},
+		#{todo},
+		#{iscompleted}
+		) on duplicate key update
+		id_no = #{id_no},
+		todo = #{todo},
+		iscompleted = #{iscompleted}
+		
+	</insert>
+	
+	<delete id="deleteOneTodo" parameterType="java.util.HashMap">
+		delete 
+			*
+		from
+			todo
+		where
+			todo_no = #{todo_no}
+		
+	</delete>
+	
+	<update id="updateTodo" parameterType="java.util.HashMap">
+		update 
+			todo
+		set 
+			todo = #{todo},
+			iscompleted = #{iscompleted}
+		where
+			todo_no = #{todo_no}
+	</update>
+	
+	<select id="selectOneTodo" parameterType="java.util.HashMap"
+		resultType="com.todo.restful.dto.TodoDto">
+		select 
+			*
+		from
+			todo
+		where 
+			todo_no = #{todo_no}
+	</select>
+	
+	
+	<select id="selectAllTodo" parameterType="java.util.HashMap"
+	resultType="com.todo.restful.dto.TodoDto">
+		select
+			*
+		from
+			todo
+	</select>
+	
+	
+	<delete id="deleteAllTodo">
+		delete 
+			from
+		todo
+	</delete>
+
+
+
+
+</mapper>

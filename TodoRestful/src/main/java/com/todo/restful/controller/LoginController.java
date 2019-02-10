@@ -44,7 +44,6 @@ public class LoginController {
 		
 		if(memberDto == null) {
 			resultMap.put("isLogined", false);
-			resultMap.put("msg" ,"아이디나 비밀번호를 확인해주세요");
 		} else {
 			resultMap.put("isLogined", true);
 		}
