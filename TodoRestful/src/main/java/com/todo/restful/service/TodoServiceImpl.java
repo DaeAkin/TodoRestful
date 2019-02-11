@@ -23,9 +23,9 @@ public class TodoServiceImpl implements TodoService {
 	}
 
 	@Override
-	public int deleteOneTodo(Map<String, Object> paramMap) {
+	public int deleteOneTodoWithTodono(int todo_no) {
 		// TODO Auto-generated method stub
-		return todoDao.deleteOneTodo(paramMap);
+		return todoDao.deleteOneTodoWithTodono(todo_no);
 	}
 
 	@Override
@@ -35,9 +35,9 @@ public class TodoServiceImpl implements TodoService {
 	}
 
 	@Override
-	public TodoDto selectOneTodo(Map<String, Object> paramMap) {
+	public TodoDto selectOneTodoWithtodono(int todo_no) {
 		// TODO Auto-generated method stub
-		return todoDao.selectOneTodo(paramMap);
+		return todoDao.selectOneTodoWithtodono(todo_no);
 	}
 
 	@Override
@@ -51,6 +51,12 @@ public class TodoServiceImpl implements TodoService {
 		// TODO Auto-generated method stub
 		todoDao.deleteAllTodo();
 		
+	}
+
+	@Override
+	public List<TodoDto> selectAllTodoWithIdno(int id_no) {
+		// TODO Auto-generated method stub
+		return todoDao.selectAllTodoWithIdno(id_no);
 	}
 	
 

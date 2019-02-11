@@ -5,7 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
+import org.springframework.stereotype.Repository;
+
 import com.todo.restful.dto.TodoDto;
 
 @Repository("todoDao")
@@ -21,21 +22,21 @@ public class TodoDaoImpl implements TodoDao{
 	}
 
 	@Override
-	public int deleteOneTodo(Map<String, Object> paramMap) {
+	public int deleteOneTodoWithTodono(int todo_no) {
 		// TODO Auto-generated method stub
-		return sqlSession.delete("deleteOneTodo",paramMap);
+		return sqlSession.delete("deleteOneTodo",todo_no);
 	}
 
 	@Override
 	public int updateTodo(Map<String, Object> paramMap) {
 		// TODO Auto-generated method stub
-		return sqlSession.update("updateTodo");
+		return sqlSession.update("updateTodo",paramMap);
 	}
 
 	@Override
-	public TodoDto selectOneTodo(Map<String, Object> paramMap) {
+	public TodoDto selectOneTodoWithtodono(int todo_no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("selectOneTodo", paramMap);
+		return sqlSession.selectOne("selectOneTodoWithtodono", todo_no);
 	}
 
 	@Override
@@ -48,5 +49,11 @@ public class TodoDaoImpl implements TodoDao{
 	public void deleteAllTodo() {
 		sqlSession.delete("deleteAllTodo");
 		
+	}
+
+	@Override
+	public List<TodoDto> selectAllTodoWithIdno(int id_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("selectAllTodoWithIdno", id_no);
 	}
 }

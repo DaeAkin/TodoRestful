@@ -12,11 +12,14 @@
 
 
 	<bean id="loginService"
-		class="com.todo.restful.service.LoginServiceImpl"/>
-		
-	<bean id="loginDao"
-		class="com.todo.restful.dao.LoginDaoImpl"/>
-	
+		class="com.todo.restful.service.LoginServiceImpl" />
+
+	<bean id="todoService"
+		class="com.todo.restful.service.TodoServiceImpl" />
+	<bean id="loginDao" class="com.todo.restful.dao.LoginDaoImpl" />
+	<bean id="todoDao" class="com.todo.restful.dao.TodoDaoImpl" />
+
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"
@@ -45,5 +48,5 @@
 		<constructor-arg index="0" ref="sqlSession" />
 
 	</bean>
-	
+
 </beans>

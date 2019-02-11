@@ -3,10 +3,10 @@
 <mapper namespace="com.todo.restful.dao.TodoDao"><!-- Class be looked -->
 	<insert id="addTodo" parameterType="java.util.HashMap"
 		useGeneratedKeys="true">
-		insert into member (
+		insert into todo (
 		id_no,
-		todo
-		iscompleted,
+		todo,
+		iscompleted
 		) values (
 		#{id_no},
 		#{todo},
@@ -18,13 +18,12 @@
 		
 	</insert>
 	
-	<delete id="deleteOneTodo" parameterType="java.util.HashMap">
-		delete 
-			*
-		from
-			todo
-		where
-			todo_no = #{todo_no}
+	<delete id="deleteOneTodo" parameterType="int">
+		delete 	
+			from
+		todo
+			where
+		todo_no = #{todo_no}
 		
 	</delete>
 	
@@ -38,7 +37,18 @@
 			todo_no = #{todo_no}
 	</update>
 	
-	<select id="selectOneTodo" parameterType="java.util.HashMap"
+	<select id="selectAllTodoWithIdno" parameterType="int"
+	resultType="com.todo.restful.dto.TodoDto"
+	>
+		select 
+			*
+		from
+			todo
+		where 
+			id_no = #{id_no}
+	</select>
+	
+	<select id="selectOneTodoWithtodono" parameterType="java.util.HashMap"
 		resultType="com.todo.restful.dto.TodoDto">
 		select 
 			*
