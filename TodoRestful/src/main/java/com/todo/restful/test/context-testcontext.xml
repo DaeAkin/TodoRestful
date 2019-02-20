@@ -27,11 +27,9 @@
 		<property name="url"
 			value="jdbc:mysql://kei890.iptime.org:3306/todotest?verifyServerCertificate=false&amp; useSSL=false" />
 		<property name="username" value="todo" />
-
 		<property name="password" value="cometrue" />
 	</bean>
-
-
+m
 
 
 	<bean id="sqlSession"
@@ -39,14 +37,11 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations"
 			value="classpath:/mapper/**/*.xml" />
-		<!-- <property name="configLocation" value="classpath:/config/spring/context-mybatis.xml"/> -->
-
 	</bean>
 
 	<bean id="sqlSessionTemplate"
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSession" />
-
 	</bean>
 
 </beans>

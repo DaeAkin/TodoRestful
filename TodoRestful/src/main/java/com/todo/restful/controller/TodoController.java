@@ -63,11 +63,19 @@ public class TodoController {
 	}
 	
 	//Todo 추가
-	@RequestMapping(value="/addTodo" , method = RequestMethod.GET)
-	public Map<String, Object> addTodo(@RequestBody Map<String, Object> paramMap) {
+	@RequestMapping(value="/addTodo" , method = RequestMethod.POST)
+	public Map<String, Object> addTodo(@RequestBody Map<String, Object> paramMap,
+			HttpServletRequest request) {
 		System.out.println("---- addTodo ----");
+		HttpSession session = request.getSession();
+		
+		MemberDto memberDto = (MemberDto)session.getAttribute("loginSession");
+		paramMap.put("id_no", memberDto.getNo());
+		paramMap.put("iscompleted", 0);
+		
 		// 리턴할 json 
 		Map<String, Object> resultMap = new HashMap<String, Object>();
+		// 필터 단에서 body에 session 추가해주는 방법도 생각해보기. 
 		
 		int result = todoService.addTodo(paramMap);
 		
@@ -94,10 +102,16 @@ public class TodoController {
 	public Map<String, Object> deleteTodo(@PathVariable(value="deleted_id") int todo_no) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
+		System.out.println("---- deleteTodo ----");
+		
 		int result = 
 				todoService.deleteOneTodoWithTodono(todo_no);
 		
+	
+		
 		resultMap.put("result", result);
+		
+		System.out.println("result :" + result);
 		
 		return resultMap;
 	}
