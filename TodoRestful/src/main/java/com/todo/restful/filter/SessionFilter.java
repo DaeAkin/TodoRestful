@@ -30,6 +30,7 @@ public class SessionFilter implements Filter{
 		HttpServletRequest request = (HttpServletRequest) req;
 		System.out.println(request.getRequestURL());
 		
+		
 		HttpSession session = request.getSession();
 		System.out.println(" 세션 확인 : " + session.getAttribute("loginSession"));
 		

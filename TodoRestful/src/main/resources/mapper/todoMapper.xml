@@ -73,6 +73,15 @@
 			from
 		todo
 	</delete>
+	
+	<update id="toggleComplete" parameterType="java.util.HashMap">
+		update 
+			todo
+		set 		
+			iscompleted = #{iscompleted}
+		where
+			todo_no = #{todo_no}
+	</update>
 
 
 

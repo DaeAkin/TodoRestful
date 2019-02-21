@@ -22,4 +22,6 @@ public interface TodoService {
 	void deleteAllTodo();
 
 	List<TodoDto> selectAllTodoWithIdno(int id_no);
+	
+	int toggleComplete(Map<String, Object> paramMap);
 }

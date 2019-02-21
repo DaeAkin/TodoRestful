@@ -84,5 +84,37 @@ public class TodoServiceTest {
 				is(3));
 
 	}
+	
+	@Test
+	public void isCompletedTest() {
+		todoService.deleteAllTodo();
+		//todo 추가
+		todoService.addTodo(DtoToMap.dtoToTodoDtoParam(todo1));
+		// todo 가져오기
+		List<TodoDto> todos = 
+				todoService.selectAllTodoWithIdno(todo1.getId_no());
+		// 1개밖에 안넣었으니 todo에 담기 no를 구별하기위한 작업
+		TodoDto todo = todos.get(0);
+		//방금 넣은 todo 인지 확인
+		assertThat(todo.getIscompleted(), is(todo1.getIscompleted()));
+		
+		// iscompleted 변경
+		todoService.toggleComplete(DtoToMap.dtoToTodoDtoParam(todo));
+		
+		//바꼇는지 확인
+		TodoDto testTodo = 
+				todoService.selectOneTodoWithtodono(todo.getTodo_no());
+	
+		assertThat(testTodo.getIscompleted(),is(true));
+		
+		//다시 false로 바꿔보기
+		todoService.toggleComplete(DtoToMap.dtoToTodoDtoParam(testTodo));
+		testTodo = 
+				todoService.selectOneTodoWithtodono(todo.getTodo_no());
+		
+		assertThat(testTodo.getIscompleted(),is(false));
+	
+		
+	}
 
 }

@@ -58,6 +58,23 @@ public class TodoServiceImpl implements TodoService {
 		// TODO Auto-generated method stub
 		return todoDao.selectAllTodoWithIdno(id_no);
 	}
+
+	@Override
+	public int toggleComplete(Map<String, Object> paramMap) {
+		
+		boolean iscompleted = (Boolean)paramMap.get("iscompleted");
+	
+		
+		iscompleted = iscompleted ? false : true;
+		
+		paramMap.put("iscompleted", iscompleted);
+		
+
+	
+		
+		return todoDao.toggleComplete(paramMap);
+		
+	}
 	
 
 }

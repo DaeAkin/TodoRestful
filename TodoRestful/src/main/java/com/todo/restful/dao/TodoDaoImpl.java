@@ -56,4 +56,10 @@ public class TodoDaoImpl implements TodoDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("selectAllTodoWithIdno", id_no);
 	}
+
+	@Override
+	public int toggleComplete(Map<String, Object> paramMap) {
+		// TODO Auto-generated method stub		
+		return sqlSession.update("toggleComplete",paramMap);
+	}
 }

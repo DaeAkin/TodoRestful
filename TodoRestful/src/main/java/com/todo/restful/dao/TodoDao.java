@@ -20,4 +20,6 @@ public interface TodoDao {
 	void deleteAllTodo();
 
 	List<TodoDto> selectAllTodoWithIdno(int id_no);
+	
+	int toggleComplete(Map<String, Object> paramMap);
 }

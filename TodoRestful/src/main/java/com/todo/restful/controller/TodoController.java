@@ -116,6 +116,8 @@ public class TodoController {
 		return resultMap;
 	}
 	
+	// 완료 토글
+	
 	// 검색은 클라이언트에서 구현
 
 }
