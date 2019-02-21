@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.boot.model.source.spi.PluralAttributeElementSourceBasic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -85,7 +86,7 @@ public class TodoController {
 	}
 	
 	//Todo 업데이트 
-	@RequestMapping(value="/updateTodo" , method = RequestMethod.GET)
+	@RequestMapping(value="/updateTodo" , method = RequestMethod.POST)
 	public Map<String, Object> updateTodo(@RequestBody Map<String, Object> paramMap) {
 	
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -117,7 +118,23 @@ public class TodoController {
 	}
 	
 	// 완료 토글
-	
+	@RequestMapping(value="/toggleComplete" , method = RequestMethod.POST)
+	public Map<String, Object> toggleComplete(@RequestBody Map<String, Object> paramMap) {
+		
+		System.out.println("---- toggleComplete ----");
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		
+		int result = 
+				todoService.toggleComplete(paramMap);
+		
+		
+		resultMap.put("result", result);
+		return resultMap;
+		
+		
+		
+	}
 	// 검색은 클라이언트에서 구현
 
 }

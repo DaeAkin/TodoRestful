@@ -59,7 +59,9 @@ public class TodoDaoImpl implements TodoDao{
 
 	@Override
 	public int toggleComplete(Map<String, Object> paramMap) {
-		// TODO Auto-generated method stub		
+		System.out.println("--- toggleComplete ----");
+		System.out.println(paramMap.get("todo_no"));
+		System.out.println(paramMap.get("iscompleted"));
 		return sqlSession.update("toggleComplete",paramMap);
 	}
 }

@@ -31,8 +31,7 @@
 		update 
 			todo
 		set 
-			todo = #{todo},
-			iscompleted = #{iscompleted}
+			todo = #{todo}
 		where
 			todo_no = #{todo_no}
 	</update>

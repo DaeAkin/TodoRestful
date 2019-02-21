@@ -62,7 +62,7 @@ public class TodoServiceTest {
 		assertThat(willUpdateTodo.getTodo(), 
 				is(todoService.selectOneTodoWithtodono(
 						willUpdateTodo.getTodo_no()).getTodo()));
-		
+	
 		//삭제하기.
 		todoService.deleteOneTodoWithTodono(willUpdateTodo.getTodo_no());
 		

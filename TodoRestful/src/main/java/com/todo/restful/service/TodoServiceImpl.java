@@ -61,6 +61,7 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public int toggleComplete(Map<String, Object> paramMap) {
+		System.out.println("---- toggleComplete Service! ----");
 		
 		boolean iscompleted = (Boolean)paramMap.get("iscompleted");
 	
@@ -68,6 +69,8 @@ public class TodoServiceImpl implements TodoService {
 		iscompleted = iscompleted ? false : true;
 		
 		paramMap.put("iscompleted", iscompleted);
+		
+		paramMap.toString();
 		
 
 	
