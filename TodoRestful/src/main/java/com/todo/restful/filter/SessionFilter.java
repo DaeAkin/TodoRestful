@@ -27,16 +27,19 @@ public class SessionFilter implements Filter{
 		// TODO Auto-generated method stub
 		System.out.println("---- doFilter ----");
 		
+		//request 객체 생성
 		HttpServletRequest request = (HttpServletRequest) req;
-		System.out.println(request.getRequestURL());
 		
+		System.out.println(request.getRequestURL());
+		// 요청 내용을 담아주는 객체 생성
+		JsonRequestWrapper jrw = new JsonRequestWrapper(request);
 		
 		HttpSession session = request.getSession();
 		System.out.println(" 세션 확인 : " + session.getAttribute("loginSession"));
 		
 		String path = ((HttpServletRequest) req).getRequestURI();
-		if (path.contains("/login")) { // 추후 수정
-		    chain.doFilter(request, res); 
+		if (path.contains("/login") || session.getAttribute("loginSession") != null) { // 추후 수정
+		    chain.doFilter(jrw, res); 
 		} else {
 		   if(session.getAttribute("loginSession") == null) {
 			   throw new SessionInvalidException("세선이 만료되었습니다.");
@@ -44,7 +47,7 @@ public class SessionFilter implements Filter{
 		}
 		
 	
-		chain.doFilter(request, res);
+		
 	}
 
 	@Override

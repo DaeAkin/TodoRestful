@@ -14,7 +14,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
- 	<filter>
+	<filter>
 		<filter-name>SessionFilter</filter-name>
 		<filter-class>com.todo.restful.filter.SessionFilter</filter-class>
 	</filter>
