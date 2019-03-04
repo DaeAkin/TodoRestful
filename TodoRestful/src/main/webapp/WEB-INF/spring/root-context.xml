@@ -10,10 +10,10 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://kei890.iptime.org:3306/todo?verifyServerCertificate=false&amp; useSSL=false" />
-		<property name="username" value="todo" />
+			value="" />
+		<property name="username" value="" />
 
-		<property name="password" value="cometrue" />
+		<property name="password" value="" />
 	</bean>
 	<bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
